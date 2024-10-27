@@ -1,70 +1,69 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Factories.Configs;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ShootEmUp
 {
     public sealed class EnemyManager : MonoBehaviour
     {
-        [SerializeField] private Transform[] spawnPositions;
-        [SerializeField] private Transform[] attackPositions;
-        [SerializeField] private Unit character;
-        [SerializeField] private Transform worldTransform;
-        [SerializeField] private EnemyPool enemyPool;
-        [SerializeField] private BulletManager _bulletManager;
-        private readonly HashSet<Enemy> m_activeEnemies = new();
+        [SerializeField] private Transform[] _spawnPositions;
+        [SerializeField] private Transform[] _attackPositions;
+        [SerializeField] private Unit _character; // Долго думал может перенести _character в EnemyFactory, но решил что здесь все же логичнее
+        [SerializeField] private EnemyFactory _enemyFactory;
+        [SerializeField] private TimerScript _timer;
+        private readonly HashSet<Enemy> _m_activeEnemies = new();
 
-     
-        private IEnumerator Start()
+
+        private void Start()
         {
-            while (true)
+            StartTimer();
+        }
+
+        private void StartTimer()
+        {
+            float delay = Random.Range(1f, 2f);
+            _timer.SetDuration(delay);
+            _timer.Play();
+            _timer.OnFinished += SpawnEnemy;
+        }
+
+        private void SpawnEnemy()
+        {
+            _timer.Cancel();
+            _timer.OnFinished -= SpawnEnemy;
+
+            Enemy enemy = _enemyFactory.Create();
+            Configure(enemy);
+
+            if (this._m_activeEnemies.Count < 5 && this._m_activeEnemies.Add(enemy))
             {
-                yield return new WaitForSeconds(Random.Range(1, 2));
-        
-                Enemy enemy = enemyPool.Rent();
-                enemy.transform.SetParent(this.worldTransform);
-                enemy.AttackComponent.SetBulletManager(_bulletManager);
-        
-                Transform spawnPosition = this.RandomPoint(this.spawnPositions);
-                enemy.transform.position = spawnPosition.position;
-        
-                Transform attackPosition = this.RandomPoint(this.attackPositions);
-                enemy.SetDestination(attackPosition.position);
-                enemy.SetTarget(this.character);
-        
-                if (this.m_activeEnemies.Count < 5 && this.m_activeEnemies.Add(enemy))
-                {
-                    enemy.AIComponent.SetAttackAllow(true);
-                }
+                enemy.SetAttackAllowance(true);
             }
+
+            StartTimer();
         }
 
-        private void Fire(Vector2 position, Color _bulletcolor, int _physicslayer, int _bulletdamage, bool _isplayer, Vector2 direction)
+
+        private void Configure(Enemy enemy)
         {
-            _bulletManager.SpawnBullet(position, _bulletcolor, _physicslayer, _bulletdamage, _isplayer, direction);
+            Transform spawnPosition = this.RandomPoint(this._spawnPositions);
+            enemy.transform.position = spawnPosition.position;
+
+            Transform attackPosition = this.RandomPoint(this._attackPositions);
+            enemy.SetDestination(attackPosition.position);
+            enemy.SetTarget(this._character);
+            enemy.OnDeath += RegisterDeath;
         }
 
-        private void FixedUpdate()
+        private void RegisterDeath(Unit unit)
         {
-            foreach (Enemy enemy in m_activeEnemies.ToArray())
-            {
-                if (enemy.HealthComponent.GetCurrentHealth() <= 0)
-                {
-                    enemy.AIComponent.SetAttackAllow(false);
-                    enemy.transform.SetParent(this.enemyPool.transform);
-                    
-                    if (this.m_activeEnemies.Remove(enemy)) 
-                    {
-                        enemyPool.Return(enemy);
-                    }
-                }
-            }
+            Enemy enemy = (Enemy)unit;
+            enemy.SetAttackAllowance(false);
+            this._m_activeEnemies.Remove(enemy);
         }
-
 
         private Transform RandomPoint(Transform[] points)
         {
