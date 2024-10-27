@@ -348,9 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 562298204}
   - component: {fileID: 562298205}
-  - component: {fileID: 562298207}
   - component: {fileID: 562298206}
-  - component: {fileID: 562298208}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -385,15 +383,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dae85f8264479bac19d85418d92392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPositions:
+  spawnPositions:
   - {fileID: 5098186055898699330}
   - {fileID: 3822857799868723767}
-  - {fileID: 6359635304368030436}
   - {fileID: 6359635304368030436}
   - {fileID: 2272249728968689581}
   - {fileID: 5689270860486713316}
   - {fileID: 106235378999874491}
-  _attackPositions:
+  attackPositions:
   - {fileID: 8569045085939387605}
   - {fileID: 9088267052445128325}
   - {fileID: 713232402740842374}
@@ -405,9 +402,10 @@ MonoBehaviour:
   - {fileID: 1549378007}
   - {fileID: 78117031}
   - {fileID: 883274640}
-  _character: {fileID: 2089918465}
-  _enemyFactory: {fileID: 562298207}
-  _timer: {fileID: 562298208}
+  character: {fileID: 2089918465}
+  worldTransform: {fileID: 1683128698}
+  enemyPool: {fileID: 562298206}
+  _bulletManager: {fileID: 363245577}
 --- !u!114 &562298206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,43 +421,6 @@ MonoBehaviour:
   _prefab: {fileID: 102605417607457000, guid: 87fe189881a524806800482ac8eaaa83, type: 3}
   _container: {fileID: 562298204}
   _poolSize: 7
---- !u!114 &562298207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562298203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77741f2c862e40beaca6a102196e42e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 562298206}
-  _bulletManager: {fileID: 363245577}
-  _worldTransform: {fileID: 1683128698}
---- !u!114 &562298208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562298203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9593436083942a987d8212f63b76eba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 5
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onFinish:
-    m_PersistentCalls:
-      m_Calls: []
-  onCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &883274639
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,9 +571,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1221146478}
   - component: {fileID: 1221146479}
-  - component: {fileID: 1221146480}
   m_Layer: 0
-  m_Name: GameCycle
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,20 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da9cd3f92ad4ed685d6547a76a6ffb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1221146480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221146477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e2b0e441fa5b94baec5c22fe49c042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 2089918465}
-  _gameCycle: {fileID: 1221146479}
+  _playerController: {fileID: 1879759790}
 --- !u!850595691 &1263964384
 LightingSettings:
   m_ObjectHideFlags: 0

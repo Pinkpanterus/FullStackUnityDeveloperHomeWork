@@ -15,7 +15,7 @@ namespace ShootEmUp
             _currentHealthPoints = _initialHealthPoints;
         }
 
-        public void ApplyDamage(int damage)
+        public void GetDamage(int damage)
         {
             _currentHealthPoints = Mathf.Max(0, _currentHealthPoints - damage);
             OnHealthPointsChanged?.Invoke(_currentHealthPoints);

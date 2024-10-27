@@ -15,17 +15,17 @@ namespace ShootEmUp
         private void OnCollisionEnter2D(Collision2D collision)
         {
             this.OnCollisionEntered?.Invoke(this, collision);
-            this.DealDamage(collision.gameObject);
+            this.DealDamage(this, collision.gameObject);
         }
 
-        private void DealDamage(GameObject other)
+        private void DealDamage(Bullet bullet, GameObject other)
         {
-            int damage = this.damage;
+            int damage = bullet.damage;
             if (damage > 0)
             {
-                if (other.TryGetComponent(out Unit unit))
+                if (other.TryGetComponent(out HealthComponent healthComponent))
                 {
-                    unit.ApplyDamage(damage);
+                    healthComponent.GetDamage(damage);
                 }
             }
         }

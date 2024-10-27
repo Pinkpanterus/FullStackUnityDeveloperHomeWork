@@ -8,7 +8,8 @@ namespace ShootEmUp
     {
         [SerializeField] private LevelBounds levelBounds;
         [SerializeField] private BulletPool bulletPool;
-        private readonly HashSet<Bullet> m_ActiveBullets = new();
+        public readonly HashSet<Bullet> m_activeBullets = new();
+
 
         private void FixedUpdate()
         {
@@ -17,8 +18,8 @@ namespace ShootEmUp
 
         void DestroyOutOfBoundariesBullets()
         {
-            List<Bullet> movingBullets = m_ActiveBullets.ToList();
-
+            List<Bullet> movingBullets = m_activeBullets.ToList();
+            
             foreach (Bullet bullet in movingBullets)
             {
                 if (!this.levelBounds.InBounds(bullet.transform.position))
@@ -33,18 +34,18 @@ namespace ShootEmUp
             Bullet bullet = bulletPool.Rent();
             bullet.Configure(position, color, physicsLayer, damage, isPlayer, velocity);
             bullet.OnCollisionEntered += RemoveBulletByCollision;
-            m_ActiveBullets.Add(bullet);
+            m_activeBullets.Add(bullet);
         }
 
-        private void RemoveBulletByCollision(Bullet bullet, Collision2D collision)
-        {
+        private void RemoveBulletByCollision(Bullet bullet, Collision2D collision) {
+            
             RemoveBullet(bullet);
         }
 
 
         private void RemoveBullet(Bullet bullet)
         {
-            if (this.m_ActiveBullets.Remove(bullet))
+            if (this.m_activeBullets.Remove(bullet)) 
             {
                 bullet.OnCollisionEntered -= RemoveBulletByCollision;
                 bulletPool.Return(bullet);
