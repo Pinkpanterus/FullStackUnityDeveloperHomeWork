@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 1495157744638834166}
   - component: {fileID: 3087771551534587440}
   - component: {fileID: 1808399517875786373}
+  - component: {fileID: 177262671289041098}
+  - component: {fileID: 3816502305252423091}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -228,10 +230,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b208d39f2ed42bc9b242f90de3ce9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveAgent: {fileID: 3816502305252423091}
+  _attackAgent: {fileID: 177262671289041098}
+--- !u!114 &177262671289041098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0485e8b9594bfba04da9dc6253c4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _attack_countdown: 1
-  _target: {fileID: 0}
-  _moveComponent: {fileID: 1495157744638834166}
   _attackComponent: {fileID: 3087771551534587440}
+--- !u!114 &3816502305252423091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957f4a7c04a846e8bccaee4e3771e834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveComponent: {fileID: 1495157744638834166}
 --- !u!1 &2239154907127902911
 GameObject:
   m_ObjectHideFlags: 0

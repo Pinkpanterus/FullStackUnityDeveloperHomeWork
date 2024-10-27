@@ -12,20 +12,24 @@ namespace ShootEmUp
         [SerializeField] private int _bulletDamage = 1;
         [SerializeField] private BulletManager _bulletManager;
 
-        public Transform FirePoint
-        {
-            get { return _firePoint; }
-        }
 
         public void SetBulletManager(BulletManager bulletManager)
         {
             _bulletManager = bulletManager;
         }
 
-
-        public void Attack(Vector2 direction)
+        public void AttackPosition(Vector2 attackingPosition)
         {
+            Vector2 vector = attackingPosition - (Vector2)_firePoint.position;
+            Vector2 direction = vector.normalized;
+
             _bulletManager.SpawnBullet(_firePoint.position, _bulletColor, (int)_physicsLayer, _bulletDamage, _isPlayer, direction * _bulletSpeed);
+        }
+
+        public void ForwardDirectionAttack()
+        {
+            Vector2 forwardDirection = (Vector2)_firePoint.position + (Vector2)Vector3.up;
+            AttackPosition(forwardDirection);
         }
     }
 }
