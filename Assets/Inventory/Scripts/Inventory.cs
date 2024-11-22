@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 // ReSharper disable NotResolvedInText
@@ -15,13 +16,16 @@ namespace Inventories
         public event Action<Item, Vector2Int> OnMoved;
         public event Action OnCleared;
 
-        public int Width => _inventoryCells.GetLength(0);
-        public int Height => _inventoryCells.GetLength(1);
+        public int Width => inventoryCells.GetLength(0);
+        public int Height => inventoryCells.GetLength(1);
 
-        public int Count => Items.Count(i => i != null);
-        public Item[] Items => _inventoryCells.Cast<Item>().Distinct().ToArray();
+        // public int Count => Items.Count(i => i != null); //TODO LINQ
+        public int Count => inventoryItemsPosition.Count;
+        public Item[] Items => inventoryItemsPosition.Keys.ToArray();
 
-        private Item[,] _inventoryCells;
+        private readonly Item[,] inventoryCells;
+        private readonly Dictionary<Item, Vector2Int> inventoryItemsPosition;
+        
 
 
         public Inventory(in int width, in int height)
@@ -29,7 +33,8 @@ namespace Inventories
             if (width < 1 || height < 1)
                 throw new ArgumentOutOfRangeException();
 
-            _inventoryCells = new Item[width, height];
+            inventoryCells = new Item[width, height];
+            inventoryItemsPosition = new Dictionary<Item, Vector2Int>();
         }
 
         public Inventory(
@@ -44,7 +49,8 @@ namespace Inventories
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
-            _inventoryCells = new Item[width, height];
+            inventoryCells = new Item[width, height];
+            inventoryItemsPosition = new Dictionary<Item, Vector2Int>();
 
             foreach (KeyValuePair<Item, Vector2Int> keyValuePair in items)
             {
@@ -65,7 +71,8 @@ namespace Inventories
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
-            _inventoryCells = new Item[width, height];
+            inventoryCells = new Item[width, height];
+            inventoryItemsPosition = new Dictionary<Item, Vector2Int>();
 
             foreach (Item item in items)
             {
@@ -91,7 +98,8 @@ namespace Inventories
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
-            _inventoryCells = new Item[width, height];
+            inventoryCells = new Item[width, height];
+            inventoryItemsPosition = new Dictionary<Item, Vector2Int>();
 
             foreach (KeyValuePair<Item, Vector2Int> keyValuePair in items)
             {
@@ -99,7 +107,7 @@ namespace Inventories
                     OnAdded?.Invoke(keyValuePair.Key, keyValuePair.Value);
             }
 
-            Debug.Log($"{_inventoryCells}");
+            // Debug.Log($"{inventoryCells}");
         }
 
         public Inventory(
@@ -108,14 +116,14 @@ namespace Inventories
             in IEnumerable<Item> items
         )
         {
-            // Вроде дублирование кода, но не понял как по-другому сделать
             if (width < 1 || height < 1)
                 throw new ArgumentOutOfRangeException("width and height must be greater than 1");
 
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
-            _inventoryCells = new Item[width, height];
+            inventoryCells = new Item[width, height];
+            inventoryItemsPosition = new Dictionary<Item, Vector2Int>();
 
             foreach (Item item in items)
             {
@@ -128,15 +136,17 @@ namespace Inventories
         }
 
 
-        private bool isPositionValid(in Vector2Int position)
+        private bool IsPositionValid(in Vector2Int position)
         {
-            return position.x >= 0 && position.x < _inventoryCells.GetLength(0) && position.y >= 0 && position.y < _inventoryCells.GetLength(1);
+            return position.x >= 0 && position.x < inventoryCells.GetLength(0) && position.y >= 0 && position.y < inventoryCells.GetLength(1);
         }
 
-        private bool isCellRangeFree(in Vector2Int position, in Vector2Int range)
+        private bool IsCellRangeFreeInternal(in Vector2Int position, in Item item)
         {
-            int xRange = range.x;
-            int yRange = range.y;
+            var itemSize = item.Size;
+            
+            int xRange = itemSize.x;
+            int yRange = itemSize.y;
 
             int xPosition = position.x;
             int yPosition = position.y;
@@ -146,22 +156,21 @@ namespace Inventories
                 for (int j = 0; j < yRange; j++)
                 {
                     var checkingPosition = new Vector2Int(xPosition + i, yPosition + j);
-                    if (!isPositionValid(checkingPosition) || IsOccupied(checkingPosition))
-                    {
+                    if(!IsPositionValid(checkingPosition)) 
                         return false;
-                    }
+                    
+                    Item cellItem = inventoryCells[checkingPosition.x, checkingPosition.y];
+                    if (IsOccupied(checkingPosition) && !cellItem.Equals(item))
+                        return false;
                 }
             }
-
             return true;
         }
         
-        private bool isCellRangeFree(in Vector2Int position, Item item)
+        private bool IsCellRangeFree(in Vector2Int position, Vector2Int itemSize)
         {
-            var itemPosition = GetPositions(item);
-            
-            int xRange = item.Size.x;
-            int yRange = item.Size.y;
+            int xRange = itemSize.x;
+            int yRange = itemSize.y;
 
             int xPosition = position.x;
             int yPosition = position.y;
@@ -171,35 +180,41 @@ namespace Inventories
                 for (int j = 0; j < yRange; j++)
                 {
                     var checkingPosition = new Vector2Int(xPosition + i, yPosition + j);
-                    if (!isPositionValid(checkingPosition) || (IsOccupied(checkingPosition)) && !itemPosition.Contains(checkingPosition))
+                    if (!IsPositionValid(checkingPosition) || IsOccupied(checkingPosition))
                     {
                         return false;
                     }
                 }
             }
-
             return true;
         }
+        
+        private bool IsCellRangeFree(in Vector2Int position, Item item)
+        {
+            return IsCellRangeFreeInternal(position, item);
+        }
+
 
         /// <summary>
         /// Checks for adding an item on a specified position
         /// </summary>
         public bool CanAddItem(in Item item, in Vector2Int position)
         {
-            if (!isPositionValid(position))
-                throw new ArgumentOutOfRangeException(paramName: nameof(position));
+            // if (!IsPositionValid(position))
+            //     throw new ArgumentOutOfRangeException(paramName: nameof(position));
             
             if (item == null)
                 return false;
            
-            if(Items.Contains(item))
-                return false;
+            // if(Contains(item))
+            //     return false;
 
             Vector2Int itemSize = item.Size;
             if(itemSize.x < 1 || itemSize.y < 1)
                 throw new ArgumentException();
                 
-            return isCellRangeFree(position, itemSize);
+            // return IsCellRangeFree(position, itemSize);
+            return IsCellRangeFree(position, item);
         }
 
         public bool CanAddItem(in Item item, in int posX, in int posY)
@@ -212,31 +227,24 @@ namespace Inventories
         /// </summary>
         public bool AddItem(in Item item, in Vector2Int position)
         {
-            if (CanAddItem(item, position))
+            if (AddItemInternal(item, position))
             {
-                OccupyCellRange(position, item);
                 OnAdded?.Invoke(item, position);
-
                 return true;
             }
-            
             return false;
         }
 
-        private void PlaceItemInInventory(in Item item)
+        private bool AddItemInternal(in Item item, in Vector2Int position)
         {
-            if (item == null)
-                return;
-
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
+            if (CanAddItem(item, position))
             {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
-                {
-                    Vector2Int position = new Vector2Int(i, j);
-                    if (isCellRangeFree(position, item.Size))
-                        OccupyCellRange(position, item);
-                }
+                OccupyCellRange(position, item);
+                inventoryItemsPosition.Add(item, position);
+                
+                return true;
             }
+            return false;
         }
 
         private void OccupyCellRange(Vector2Int position, Item item)
@@ -252,22 +260,13 @@ namespace Inventories
             {
                 for (int j = 0; j < yRange; j++)
                 {
-                    _inventoryCells[xPosition + i, yPosition + j] = item;
+                    inventoryCells[xPosition + i, yPosition + j] = item;
                 }
             }
         }
 
         public bool AddItem(in Item item, in int posX, in int posY)
         {
-            // if (item == null || !CanAddItem(item, new Vector2Int(posX, posY)))
-            //     return false;
-            //
-            // // if (!isCellRangeFree(new Vector2Int(posX, posY), item.Size))
-            // //     return false;
-            //
-            // AddItem(item, posX, posY);
-            // return true;
-
             return AddItem(item, new Vector2Int(posX, posY));
         }
 
@@ -293,6 +292,9 @@ namespace Inventories
         {
             if (item == null)
                 return false;
+            
+            if (Contains(item))
+                return false;
 
             if (FindFreePosition(item.Size, out Vector2Int position))
             {
@@ -317,12 +319,12 @@ namespace Inventories
                 return false;
             }
             
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
+            for (int i = 0; i < inventoryCells.GetLength(0); i++)
             {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
+                for (int j = 0; j < inventoryCells.GetLength(1); j++)
                 {
                     Vector2Int position = new Vector2Int(i, j);
-                    if (isCellRangeFree(position, size))
+                    if (IsCellRangeFree(position, size))
                     {
                         freePosition = position;
                         return true;
@@ -342,7 +344,7 @@ namespace Inventories
             if (item == null)
                 return false;
             
-            return Items.Contains(item);
+            return inventoryItemsPosition.ContainsKey(item);
         }
 
         /// <summary>
@@ -350,13 +352,10 @@ namespace Inventories
         /// </summary>
         public bool IsOccupied(in Vector2Int position)
         {
-            // if (!isPositionValid(position))
-            //     return false;
-
             int x = position.x;
             int y = position.y;
 
-            return _inventoryCells[x, y] != null;
+            return inventoryCells[x, y] != null;
         }
 
         public bool IsOccupied(in int x, in int y)
@@ -369,13 +368,13 @@ namespace Inventories
         /// </summary>
         public bool IsFree(in Vector2Int position)
         {
-            if (!isPositionValid(position))
+            if (!IsPositionValid(position))
                 return false;
 
             int x = position.x;
             int y = position.y;
 
-            return _inventoryCells[x, y] == null;
+            return inventoryCells[x, y] == null;
         }
 
         public bool IsFree(in int x, in int y)
@@ -391,6 +390,17 @@ namespace Inventories
 
         public bool RemoveItem(in Item item, out Vector2Int position)
         {
+            if (RemoveItemInternal(item, out position))
+            {
+                OnRemoved?.Invoke(item, position);
+                return true;
+            }
+            
+            return false;
+        }
+
+        private bool RemoveItemInternal(in Item item, out Vector2Int position)
+        {
             if (item == null || !Contains(item))
             {
                 position = Vector2Int.zero;
@@ -400,12 +410,28 @@ namespace Inventories
             var itemPositions = GetPositions(item);
             foreach (Vector2Int coord in itemPositions)
             {
-                _inventoryCells[coord.x, coord.y] = null;
+                inventoryCells[coord.x, coord.y] = null;
             }
-
-            position = new Vector2Int(itemPositions.Min(cell => cell.x), itemPositions.Min(cell => cell.y));
-            OnRemoved?.Invoke(item, position);
+            
+            // position = new Vector2Int(itemPositions.Min(cell => cell.x), itemPositions.Min(cell => cell.y));
+            position = GetItemPosition(item);
+            inventoryItemsPosition.Remove(item);
             return true;
+        }
+
+        private Vector2Int GetItemPosition(in Item item)
+        {
+            // for (int i = 0; i < inventoryCells.GetLength(0); i++)
+            // {
+            //     for (int j = 0; j < inventoryCells.GetLength(1); j++)
+            //     {
+            //         if (inventoryCells[i, j].Equals(item))
+            //             return new Vector2Int(i, j);
+            //     }
+            // }
+            
+            // return Vector2Int.zero;
+            return inventoryItemsPosition.ContainsKey(item) ? inventoryItemsPosition[item] : Vector2Int.zero;
         }
 
         /// <summary>
@@ -413,17 +439,24 @@ namespace Inventories
         /// </summary>
         public Item GetItem(in Vector2Int position)
         {
-            // if (isPositionValid(position))
-            //     return _inventoryCells[position.x, position.y];
-            //
-            // return null;
-            if (position.x == 0 && position.y == 0)
-                throw new NullReferenceException();
+            // if (position.x == 0 && position.y == 0)
+            //     throw new NullReferenceException();
+               
             
-            if (!isPositionValid(position))
+            if (!IsPositionValid(position))
                 throw new IndexOutOfRangeException();
-            
-            return _inventoryCells[position.x, position.y];
+
+            Item item = null;
+            foreach (var inventoryItem in inventoryItemsPosition.Keys)
+            {
+                var itemCells = GetPositions(inventoryItem);
+                foreach (Vector2Int cell in itemCells)
+                {
+                    if (cell.x.Equals(position.x) && cell.y.Equals(position.y))
+                        item = inventoryItem;
+                }
+            }
+            return item is not null ? item : throw new NullReferenceException();
         }
 
         public Item GetItem(in int x, in int y)
@@ -431,7 +464,7 @@ namespace Inventories
 
         public bool TryGetItem(in Vector2Int position, out Item item)
         {
-            if (!isPositionValid(position))
+            if (!IsPositionValid(position))
             {
                 item = null;
                 return false;
@@ -461,24 +494,22 @@ namespace Inventories
         {
             if (item is null)
                 throw new NullReferenceException();
-            // {
-            //     positions = null;
-            //     return false; 
-            // }
-            
-            if (!Items.Contains(item))
+
+            if (!Contains(item))
                 throw new KeyNotFoundException();
 
+            var itemPosition = GetItemPosition(item);
+            var itemSize = item.Size;
+
             List<Vector2Int> positionList = new List<Vector2Int>();
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
+            for (int x = 0; x < itemSize.x; x++)
             {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
+                for (int y = 0; y < itemSize.y; y++)
                 {
-                    if (_inventoryCells[i, j] == item)
-                        positionList.Add(new Vector2Int(i, j));
+                    positionList.Add(new Vector2Int(x + itemPosition.x, y + itemPosition.y));
                 }
             }
-
+                    
             positions = positionList.Count > 0 ? positionList.ToArray() : null;
             return positions?.Length > 0;
         }
@@ -491,13 +522,16 @@ namespace Inventories
             if (Count == 0)
                 return;
             
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
-            {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
-                {
-                    _inventoryCells[i, j] = null;
-                }
-            }
+            Array.Clear(inventoryCells, 0, inventoryCells.Length);
+            inventoryItemsPosition.Clear();
+            
+            // for (int i = 0; i < inventoryCells.GetLength(0); i++)
+            // {
+            //     for (int j = 0; j < inventoryCells.GetLength(1); j++)
+            //     {
+            //         inventoryCells[i, j] = null;
+            //     }
+            // }
             
             OnCleared?.Invoke();
         }
@@ -507,13 +541,32 @@ namespace Inventories
         /// </summary>
         public int GetItemCount(string name)
         {
-            if (name == "")
+            if (name == "" || name == null)
                 return 1;
+            //
+            // Item searchingItem = null;
+            // int nullCellCount = 0;
+            // int itemCellCount = 0;
+            // foreach (Item item in inventoryCells)
+            // {
+            //     if (item is null)
+            //         nullCellCount++; 
+            //     else if (item.Name.Equals(name))
+            //     {
+            //         itemCellCount++;
+            //         searchingItem = item;
+            //     }
+            // }
+            // var itemSize = searchingItem.Size.x * searchingItem.Size.y;
+            // return searchingItem is not null? itemCellCount / itemSize : nullCellCount;
             
-            if (name is null)
-                return Items.Count(i => i.Name is null);
-            
-            return Items.Count(i => i.Name == name);
+            int itemCount = 0;
+            foreach (var item in inventoryItemsPosition.Keys)
+            {
+                if (item.Name == name)
+                    itemCount++;
+            }
+            return itemCount;
         }
 
         /// <summary>
@@ -521,34 +574,37 @@ namespace Inventories
         /// </summary>
         public bool MoveItem(in Item item, in Vector2Int newPosition)
         {
-            if (item == null)
-                // throw new ArgumentNullException(nameof(item));
-                throw new System.ArgumentNullException(nameof(item));
+            if (MoveItemInternal(item, newPosition))
+            {
+                OnMoved?.Invoke(item, newPosition);
+                return true;
+            }
+            return false;
+        }
+
+        private bool MoveItemInternal(Item item, Vector2Int newPosition)
+        {
+            // Debug.Log($"{item.Name} is null: {item is null}, is moving to {newPosition}");
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
             
             if (!Items.Contains(item))
                 return false;
 
-            if (!isCellRangeFree(newPosition, item))
+            if (!IsCellRangeFree(newPosition, item))
                 return false;
 
             Vector2Int[] itemCells = GetPositions(item);
-            var currentPosition = new Vector2Int(itemCells.Min(cell => cell.x), itemCells.Min(cell => cell.y));
-            var coordDelta = newPosition - currentPosition;
-            var newItemCells = itemCells.Select(cell => cell + coordDelta).ToArray();
-
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
+            Vector2Int currentPosition = GetItemPosition(item);
+            Vector2Int coordDelta = newPosition - currentPosition;
+            
+            foreach (Vector2Int cell in itemCells)
             {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
-                {
-                    if (itemCells.Contains(new Vector2Int(i, j)))
-                        _inventoryCells[i, j] = null;
-
-                    if (newItemCells.Contains(new Vector2Int(i, j)))
-                        _inventoryCells[i, j] = item;
-                }
+                var newCell = cell + coordDelta;
+                inventoryCells[cell.x, cell.y] = null;
+                inventoryCells[newCell.x,newCell.y] = item;
             }
 
-            OnMoved?.Invoke(item, newPosition);
             return true;
         }
 
@@ -559,30 +615,45 @@ namespace Inventories
         {
             if (Count == 0)
                 return;
-
-            Vector2Int? emptyCell = null;
-
-       
-            for (int i = 0; i < _inventoryCells.GetLength(1); i++)
+            
+            Dictionary<Item, Vector2Int> copyInventoryItemsPosition= new Dictionary<Item, Vector2Int>(inventoryItemsPosition);
+            var items = copyInventoryItemsPosition.Keys.ToArray();
+            Array.Sort(items, new SizeComparer());
+            
+            Clear();
+            
+            foreach (Item item in items)
             {
-                for (int j = 0; j < _inventoryCells.GetLength(0); j++)
+                for (int i = 0; i < copyInventoryItemsPosition.Count; i++)
                 {
-                    if (_inventoryCells[i, j] == null)
-                    {
-                        emptyCell = new Vector2Int(i, j);
-                    }
-                    else
-                    {
-                        if (emptyCell != null)
-                        {
-                            var item = GetItem(i, j);
-                            MoveItem(item, emptyCell.Value);
-                            emptyCell = null;
-                        }
-                    }
+                    if(FindFreePosition(item.Size, out Vector2Int position))
+                        MoveItem(item, position);
                 }
             }
-            // Debug.Log(_inventoryCells.GetLength(0) * _inventoryCells.GetLength(1));
+
+            // Vector2Int? emptyCell = null;
+
+
+            // for (int i = 0; i < inventoryCells.GetLength(1); i++)
+            // {
+            //     for (int j = 0; j < inventoryCells.GetLength(0); j++)
+            //     {
+            //         if (inventoryCells[i, j] == null)
+            //         {
+            //             emptyCell = new Vector2Int(i, j);
+            //         }
+            //         else
+            //         {
+            //             if (emptyCell != null)
+            //             {
+            //                 var item = GetItem(i, j);
+            //                 MoveItem(item, emptyCell.Value);
+            //                 emptyCell = null;
+            //             }
+            //         }
+            //     }
+            // }
+            // // Debug.Log(_inventoryCells.GetLength(0) * _inventoryCells.GetLength(1));
         }
 
         /// <summary>
@@ -590,20 +661,23 @@ namespace Inventories
         /// </summary>
         public void CopyTo(in Item[,] matrix)
         {
-            if (matrix == null)
+            if (matrix == null || inventoryCells == null || matrix.GetLength(0) != inventoryCells.GetLength(0) || matrix.GetLength(1) != inventoryCells.GetLength(1))
                 return;
-            
-            for (int i = 0; i < _inventoryCells.GetLength(0); i++)
+
+            int rows = inventoryCells.GetLength(0);
+            int cols = inventoryCells.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < _inventoryCells.GetLength(1); j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    matrix[i, j] = _inventoryCells[i, j];
+                    matrix[i, j] = inventoryCells[i, j];
                 }
             }
         }
 
-        public IEnumerator<Item> GetEnumerator()
-            => _inventoryCells.Cast<Item>().Distinct().GetEnumerator();
+        public IEnumerator<Item> GetEnumerator() 
+            => inventoryItemsPosition.Keys.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
             => GetEnumerator();
