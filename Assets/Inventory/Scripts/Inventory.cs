@@ -456,7 +456,8 @@ namespace Inventories
                         item = inventoryItem;
                 }
             }
-            return item is not null ? item : throw new NullReferenceException();
+            // return item is not null ? item : throw new NullReferenceException();
+            return item;
         }
 
         public Item GetItem(in int x, in int y)
