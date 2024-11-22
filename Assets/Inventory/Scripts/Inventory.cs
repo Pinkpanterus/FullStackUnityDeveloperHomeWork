@@ -206,8 +206,8 @@ namespace Inventories
             if (item == null)
                 return false;
            
-            // if(Contains(item))
-            //     return false;
+            if(Contains(item))
+                return false;
 
             Vector2Int itemSize = item.Size;
             if(itemSize.x < 1 || itemSize.y < 1)
