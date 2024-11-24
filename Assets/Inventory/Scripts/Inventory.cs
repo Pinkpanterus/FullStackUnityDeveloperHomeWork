@@ -483,19 +483,18 @@ namespace Inventories
             Item item = null;
             foreach (var inventoryItem in inventoryItemsPosition.Keys)
             {
-                
-                
                 var itemCells = GetPositions(inventoryItem);
                 foreach (Vector2Int cell in itemCells)
                 {
                     if (cell.x.Equals(position.x) && cell.y.Equals(position.y))
+                    {
                         item = inventoryItem;
+                    }
                 }
             }
+            if (item is null)
+                throw new NullReferenceException();
             
-            // if (item is null)
-            //     throw new NullReferenceException();
-           
             return item;
         }
 
@@ -510,7 +509,10 @@ namespace Inventories
                 return false;
             }
 
-            item = GetItem(position);
+            item = inventoryCells[position.x, position.y];
+            // if (item is null)
+            //     throw new NullReferenceException();
+            
             return item is not null;
         }
 
