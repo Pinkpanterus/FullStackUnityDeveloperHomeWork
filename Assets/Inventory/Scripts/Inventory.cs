@@ -477,15 +477,14 @@ namespace Inventories
         /// </summary>
         public Item GetItem(in Vector2Int position)
         {
-            // if (position.x == 0 && position.y == 0)
-            //     throw new NullReferenceException();
-            
             if (!IsPositionValid(position, inventoryCells))
                 throw new IndexOutOfRangeException();
 
             Item item = null;
             foreach (var inventoryItem in inventoryItemsPosition.Keys)
             {
+                
+                
                 var itemCells = GetPositions(inventoryItem);
                 foreach (Vector2Int cell in itemCells)
                 {
@@ -493,6 +492,10 @@ namespace Inventories
                         item = inventoryItem;
                 }
             }
+            
+            // if (item is null)
+            //     throw new NullReferenceException();
+           
             return item;
         }
 
@@ -519,6 +522,9 @@ namespace Inventories
         /// </summary>
         public Vector2Int[] GetPositions(in Item item)
         {
+            if (item is null)
+                throw new NullReferenceException();
+            
             if (TryGetPositions(item, out Vector2Int[] positions))
             {
                 return positions;
