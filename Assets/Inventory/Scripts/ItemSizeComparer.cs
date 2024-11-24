@@ -6,7 +6,7 @@ namespace Inventories
     {
         public int Compare(Item x, Item y)
         {
-            return x.Size.x * x.Size.y.CompareTo(y.Size.x * y.Size.y);
+            return (y.Size.x * y.Size.y).CompareTo((x.Size.x * x.Size.y));
         }
     }
 }

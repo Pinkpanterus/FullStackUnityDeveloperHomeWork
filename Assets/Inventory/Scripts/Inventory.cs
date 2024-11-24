@@ -667,7 +667,7 @@ namespace Inventories
             
             Clear();
             
-            Debug.Log(items);
+            // Debug.Log(items);
             foreach (Item item in items)
             {
                 for (int i = 0; i < inventoryItemsPositionCopy.Count; i++)
