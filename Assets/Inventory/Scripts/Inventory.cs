@@ -525,6 +525,9 @@ namespace Inventories
             if (item is null)
                 throw new NullReferenceException();
             
+            if (!Contains(item))
+                throw new KeyNotFoundException();
+            
             if (TryGetPositions(item, out Vector2Int[] positions))
             {
                 return positions;
