@@ -354,9 +354,11 @@ namespace Inventories
                 return false;
             }
             
-            for (int i = 0; i < inventory.GetLength(0); i++)
+            // for (int i = 0; i < inventory.GetLength(0); i++)
+            for (int j = 0; j < inventory.GetLength(1); j++)
             {
-                for (int j = 0; j < inventory.GetLength(1); j++)
+                // for (int j = 0; j < inventory.GetLength(1); j++)
+                for (int i = 0; i < inventory.GetLength(0); i++)
                 {
                     Vector2Int position = new Vector2Int(i, j);
                     if (IsCellRangeFree(position, size, inventory))
@@ -671,7 +673,7 @@ namespace Inventories
                 for (int i = 0; i < inventoryItemsPositionCopy.Count; i++)
                 {
                     if(FindFreePosition(item.Size, out Vector2Int position))
-                        MoveItem(item, position);
+                        AddItem(item, position);
                 }
             }
             
@@ -679,7 +681,7 @@ namespace Inventories
             {
                 for (int j = 0; j < inventoryCells.GetLength(1); j++)
                 {
-                    Debug.Log(inventoryCells[i,j]);
+                    Debug.Log($"Cell ({i}, {j}): {inventoryCells[i,j]}");
                 }
             }
             
