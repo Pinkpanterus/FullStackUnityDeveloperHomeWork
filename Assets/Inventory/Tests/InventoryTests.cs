@@ -38,22 +38,22 @@ namespace Inventories
             //Assert:
             Assert.Catch<ArgumentNullException>(() =>
             {
-                var _ = new Inventory(5, 3, (IEnumerable<KeyValuePair<Item, Vector2Int>>) null);
+                var _ = new Inventory(5, 3, (IEnumerable<KeyValuePair<Item, Vector2Int>>)null);
             });
 
             Assert.Catch<ArgumentNullException>(() =>
             {
-                var _ = new Inventory(5, 3, (KeyValuePair<Item, Vector2Int>[]) null);
+                var _ = new Inventory(5, 3, (KeyValuePair<Item, Vector2Int>[])null);
             });
 
             Assert.Catch<ArgumentNullException>(() =>
             {
-                var _ = new Inventory(5, 3, (IEnumerable<Item>) null);
+                var _ = new Inventory(5, 3, (IEnumerable<Item>)null);
             });
 
             Assert.Catch<ArgumentNullException>(() =>
             {
-                var _ = new Inventory(5, 3, (Item[]) null);
+                var _ = new Inventory(5, 3, (Item[])null);
             });
         }
 
@@ -1144,9 +1144,9 @@ namespace Inventories
 
             var expected = new[,]
             {
-                {x, x, z},
-                {x, x, z},
-                {y, y, y}
+                { x, x, z },
+                { x, x, z },
+                { y, y, y }
             };
             var actual = new Item[3, 3];
             yield return new TestCaseData(inventory, expected, actual).SetName("Sample");
@@ -1318,7 +1318,7 @@ namespace Inventories
         {
             //Act:
             inventory.ReorganizeSpace();
-            
+
             //Assert:
             Item[,] actual = new Item[inventory.Width, inventory.Height];
             inventory.CopyTo(actual);
@@ -1348,10 +1348,10 @@ namespace Inventories
                     new KeyValuePair<Item, Vector2Int>(item5, new Vector2Int(1, 1))
                 ), new[,]
                 {
-                    {item5, item5, null, null},
-                    {item5, item5, null, null},
-                    {item1, item3, null, null},
-                    {item2, item4, null, null}
+                    { item5, item5, null, null },
+                    { item5, item5, null, null },
+                    { item1, item3, null, null },
+                    { item2, item4, null, null }
                 }
             ).SetName("Simple");
         }
@@ -1370,10 +1370,10 @@ namespace Inventories
                     new KeyValuePair<Item, Vector2Int>(item4, new Vector2Int(0, 2))
                 ), new[,]
                 {
-                    {item4, item4, item2, item2},
-                    {item4, item4, item2, item2},
-                    {item4, item4, item1, item1},
-                    {item3, item3, item3, item3}
+                    { item4, item4, item2, item2 },
+                    { item4, item4, item2, item2 },
+                    { item4, item4, item1, item1 },
+                    { item3, item3, item3, item3 }
                 }
             ).SetName("Full");
         }
@@ -1398,11 +1398,11 @@ namespace Inventories
                     new KeyValuePair<Item, Vector2Int>(item7, new Vector2Int(4, 0))
                 ), new[,]
                 {
-                    {item2, item2, item2, item4, item1},
-                    {item2, item2, item2, item4, null},
-                    {item5, item5, item3, item6, null},
-                    {item5, item5, item3, item6, null},
-                    {item7, item7, item7, item7, null}
+                    { item2, item2, item2, item4, item1 },
+                    { item2, item2, item2, item4, null },
+                    { item5, item5, item3, item6, null },
+                    { item5, item5, item3, item6, null },
+                    { item7, item7, item7, item7, null }
                 }
             ).SetName("Medium");
         }

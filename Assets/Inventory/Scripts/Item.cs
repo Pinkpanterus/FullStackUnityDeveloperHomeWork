@@ -48,7 +48,7 @@ namespace Inventories
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Item) obj);
+            return Equals((Item)obj);
         }
 
         public bool Equals(Item other)
