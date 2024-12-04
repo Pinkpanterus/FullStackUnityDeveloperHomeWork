@@ -376,32 +376,28 @@ namespace Inventories
 
         private bool RemoveItemInternal(in Item item, out Vector2Int position)
         {
-            if (item == null || !Contains(item))
+            if (item == null)
             {
                 position = Vector2Int.zero;
                 return false;
             }
-
-            Vector2Int pivot = items[item];
+            
+            if (!items.Remove(item, out position))
+                return false;
+   
             Vector2Int itemSize = item.Size;
             for (int x = 0; x < itemSize.x; x++)
-            {
-                for (int y = 0; y < itemSize.y; y++)
-                {
-                    cells[pivot.x + x, pivot.y + y] = null;
-                }
-            }
+            for (int y = 0; y < itemSize.y; y++)
+                cells[position.x + x, position.y + y] = null;
 
-            position = pivot;
-            items.Remove(item);
             return true;
         }
 
-        private Vector2Int GetItemPosition(in Item item)
-        {
-            items.TryGetValue(item, out Vector2Int position);
-            return position;
-        }
+        // private Vector2Int GetItemPosition(in Item item)
+        // {
+        //     items.TryGetValue(item, out Vector2Int position);
+        //     return position;
+        // }
 
         /// <summary>
         /// Returns an item at specified position 
@@ -515,7 +511,7 @@ namespace Inventories
         /// </summary>
         public int GetItemCount(string name)
         {
-            if (name is "" or null)
+            if (string.IsNullOrEmpty(name))
                 return 1;
 
             int itemCount = 0;
@@ -581,8 +577,9 @@ namespace Inventories
             Array.Clear(cells, 0, cells.Length);
             items.Clear();
 
-            foreach (Item item in itemArray)
-            {
+            for (int i = 0; i < itemArray.Length; i++)
+            {   
+                Item item = itemArray[i];
                 if (FindFreePosition(item.Size, out Vector2Int position))
                     AddItemInternal(item, position);
             }
