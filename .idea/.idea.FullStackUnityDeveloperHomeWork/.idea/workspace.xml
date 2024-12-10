@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="997464ae-87a8-40db-8184-94f2bebc8a66" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Converter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Converter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/ConverterMonobehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/ConverterMonobehaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Material.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Material.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Product.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Product.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Receipt.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Receipt.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/IConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/IConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/Converter.Tests.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/Converter.Tests.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/ConverterTests.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/ConverterTests.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/Converter.TestsPlaymode.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/Converter.TestsPlaymode.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/ConverterPlaymodeTests.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/ConverterPlaymodeTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/TimerScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/TimerScript.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +99,7 @@
       <workItem from="1733256117908" duration="2689000" />
       <workItem from="1733333352856" duration="8771000" />
       <workItem from="1733850474917" duration="5240000" />
-      <workItem from="1733855921698" duration="2880000" />
+      <workItem from="1733855921698" duration="3099000" />
     </task>
     <servers />
   </component>
