@@ -6,7 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="997464ae-87a8-40db-8184-94f2bebc8a66" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inventory/Scripts/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inventory/Scripts/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Converter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Converter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/ConverterMonobehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/ConverterMonobehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Material.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Material.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Product.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Product.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Receipt.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/Delete/Receipt.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/IConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Scripts/IConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/Converter.Tests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/Converter.Tests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/ConverterTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/Tests/ConverterTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/Converter.TestsPlaymode.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/Converter.TestsPlaymode.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/ConverterPlaymodeTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_3/Modules/Converter/TestsPlaymode/ConverterPlaymodeTests.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +37,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10b6135e63434fdba4fc6c109928ab3b50800/b6/9c09eb4e/TestCaseSourceAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Inventory/Scripts/ItemSizeComparer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.33/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -35,7 +55,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HomeWork__2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Homework__3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -98,6 +118,8 @@
       <workItem from="1732903252171" duration="7918000" />
       <workItem from="1733256117908" duration="2689000" />
       <workItem from="1733333352856" duration="8771000" />
+      <workItem from="1733850474917" duration="5240000" />
+      <workItem from="1733855921698" duration="2880000" />
     </task>
     <servers />
   </component>

@@ -7,16 +7,16 @@ namespace Modules.Converter
        Конвертер представляет собой преобразователь ресурсов, который берет ресурсы
        из зоны погрузки (справа) и через несколько секунд преобразовывает его в
        ресурсы другого типа (слева).
-       
+
        Конвертер работает автоматически. Когда заканчивается цикл переработки
        ресурсов, то конвертер берет следующую партию и начинает цикл по новой, пока
        можно брать ресурсы из зоны загрузки или пока есть место для ресурсов выгрузки.
-       
+
        Также конвертер можно выключать. Если конвертер во время работы был
        выключен, то он возвращает обратно ресурсы в зону загрузки. Если в это время
        были добавлены еще ресурсы, то при переполнении возвращаемые ресурсы
        «сгорают».
-     
+
        Характеристики конвертера:
        - Зона погрузки: вместимость бревен
        - Зона выгрузки: вместимость досок
@@ -25,7 +25,6 @@ namespace Modules.Converter
        - Время преобразования ресурсов
        - Состояние: вкл/выкл
      */
-    
     public sealed class Converter : IConverter
     {
         private int _materialsAmount;
@@ -35,33 +34,20 @@ namespace Modules.Converter
         private int _materialAmountForProduction;
         private int _productAmountFromProduction;
         private float _productionTime;
+        private float _elapsedTime;
         private bool _isOn;
+        private bool _isProductionInProgress;
 
-        public Converter(int materialStorageCapacity, int productStorageCapacity, int materialAmountForProduction, int productAmountFromProduction, float productionTime, bool isOn)
+        public Converter(int materialStorageCapacity, int productStorageCapacity, int materialAmountForProduction, int productAmountFromProduction, float productionTime,
+            bool isOn)
         {
-            if (materialStorageCapacity <= 0 || 
-                productStorageCapacity <= 0 || 
-                materialAmountForProduction <= 0 || 
-                productAmountFromProduction <= 0 || 
+            if (materialStorageCapacity <= 0 ||
+                productStorageCapacity <= 0 ||
+                materialAmountForProduction <= 0 ||
+                productAmountFromProduction <= 0 ||
                 productionTime <= 0)
                 throw new ArgumentOutOfRangeException();
-          
-            _materialStorageCapacity = materialStorageCapacity;
-            _productStorageCapacity = productStorageCapacity;
-            _materialAmountForProduction = materialAmountForProduction;
-            _productAmountFromProduction = productAmountFromProduction;
-            _productionTime = productionTime;
-            _isOn = isOn;
-        }
-        
-        public Converter()
-        {
-      
-        }
 
-
-        public void Construct(int materialStorageCapacity, int productStorageCapacity, int materialAmountForProduction, int productAmountFromProduction, float productionTime, bool isOn)
-        {
             _materialStorageCapacity = materialStorageCapacity;
             _productStorageCapacity = productStorageCapacity;
             _materialAmountForProduction = materialAmountForProduction;
@@ -74,13 +60,13 @@ namespace Modules.Converter
         {
             if (quantity < 1)
                 throw new ArgumentOutOfRangeException();
-            
+
             int possibleQuantity = _materialsAmount + quantity;
             _materialsAmount = Math.Min(possibleQuantity, _materialStorageCapacity);
             change = possibleQuantity > _materialStorageCapacity ? possibleQuantity - _materialStorageCapacity : 0;
             return true;
         }
-        
+
         public bool TakeMaterials(int quantity)
         {
             if (quantity < 1 || quantity > _materialStorageCapacity)
@@ -88,7 +74,7 @@ namespace Modules.Converter
 
             if (_materialsAmount < quantity)
                 return false;
-            
+
             _materialsAmount -= quantity;
             return true;
         }
@@ -102,13 +88,12 @@ namespace Modules.Converter
         {
             if (quantity < 1)
                 throw new ArgumentOutOfRangeException();
-            
-            int currentQuantity = _productsAmount;
-            int possibleQuantity = currentQuantity + quantity;
+
+            int possibleQuantity = _productsAmount + quantity;
             _productsAmount = Math.Min(possibleQuantity, _productStorageCapacity);
             return true;
         }
-        
+
         public bool TakeProducts(int quantity)
         {
             if (quantity < 1 || quantity > _productStorageCapacity)
@@ -116,35 +101,59 @@ namespace Modules.Converter
 
             if (_productsAmount < quantity)
                 return false;
-            
+
             _productsAmount -= quantity;
             return true;
         }
 
-        public int GetProductCount()
+        public int GetProductsCount()
         {
             return _productsAmount;
         }
 
-        public bool Produce()
+        public void Produce()
         {
-            if (!_isOn)
-                return false;
-            
-            _materialsAmount -= _materialAmountForProduction;
-            Thread.Sleep((int)(_productionTime*1000)); 
-            _productAmountFromProduction += _productAmountFromProduction;
-            return true;
+            if (!_isOn && _isProductionInProgress)
+            {
+                AddMaterials(_materialAmountForProduction, out int change);
+                _isProductionInProgress = false;
+            }
+
+            if (_isProductionInProgress && _elapsedTime == 0)
+            {
+                AddProducts(_productAmountFromProduction);
+                _isProductionInProgress = false;
+            }
+
+            if (!_isProductionInProgress && _isOn && TakeMaterials(_materialAmountForProduction))
+                _isProductionInProgress = true;
         }
-        
+
+        public void Update(float deltaTime)
+        {
+            if (!_isProductionInProgress)
+            {
+                if (_elapsedTime > 0)
+                    _elapsedTime = 0;
+            }
+            else
+            {
+                _elapsedTime += deltaTime;
+                if (_elapsedTime >= _productionTime)
+                    _elapsedTime = 0;
+            }
+
+            Produce();
+        }
+
         public int MaterialAmountForProduction() => _materialAmountForProduction;
-        
+
         public int ProductAmountFromProduction() => _productAmountFromProduction;
-        
+
         public float ProductionTime() => _productionTime;
-        
+
         public bool IsOn() => _isOn;
-        
+
         public void SwitchState(bool isOn)
         {
             _isOn = isOn;
