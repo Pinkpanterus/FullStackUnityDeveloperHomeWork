@@ -113,26 +113,12 @@ namespace Modules.Converter
             Assert.AreEqual(5, converter.GetProductsCount());
         }
 
-        [Test]
-        public void WhenAddMaterialWithAmountMoreThanLimitThenTrueAndReturnChange()
-        {
-            //Arrange:
-            var converter = new Converter(100, 100, 2, 1, 3, false);
-
-            //Act:
-            bool success = converter.AddMaterials(110, out int change);
-
-            //Assert:
-            Assert.IsTrue(success);
-            Assert.AreEqual(100, converter.GetMaterialsCount());
-            Assert.AreEqual(10, change);
-        }
-
         /*
          * В ТЗ не написано, поэтому предполагаю, что если на склад готовой продукции
          * кладем больше продукции чем он вмещает, то то что не влазит - "сгорает".
          * На случай, если во время производства кто-то забьет склад готовой продукции.
          */
+
         [Test]
         public void WhenAddProductWithAmountMoreThanLimitThenTrueAndBurnChange()
         {
@@ -144,26 +130,6 @@ namespace Modules.Converter
             //Assert:
             Assert.IsTrue(success);
             Assert.AreEqual(100, converter.GetProductsCount());
-        }
-
-        [Test]
-        public void WhenAddProductWithNegativeAmountThenException()
-        {
-            //Arrange:
-            var converter = new Converter(100, 100, 2, 1, 3, false);
-
-            //Assert:
-            Assert.Catch<ArgumentOutOfRangeException>(() => converter.AddProducts(-10));
-        }
-
-        [Test]
-        public void WhenAddMaterialWithNegativeAmountThenException()
-        {
-            //Arrange:
-            var converter = new Converter(100, 100, 2, 1, 3, false);
-
-            //Assert:
-            Assert.Catch<ArgumentOutOfRangeException>(() => converter.AddMaterials(-10, out int change));
         }
 
         [Test]
@@ -183,19 +149,39 @@ namespace Modules.Converter
         }
 
         [Test]
-        public void WhenFinishProductionThenAddProducts()
+        public void WhenAddProductWithNegativeAmountThenException()
         {
             //Arrange:
-            var converter = new Converter(100, 100, 2, 1, 3, true);
-            int startMaterialAmount = 10;
-
-            //Act:
-            bool success = converter.AddMaterials(startMaterialAmount, out int change);
-            converter.Update(Time.deltaTime);
-            converter.Update(converter.ProductionTime());
+            var converter = new Converter(100, 100, 2, 1, 3, false);
 
             //Assert:
-            Assert.AreEqual(converter.ProductAmountFromProduction(), converter.GetProductsCount());
+            Assert.Catch<ArgumentOutOfRangeException>(() => converter.AddProducts(-10));
+        }
+
+
+        [Test]
+        public void WhenAddMaterialWithAmountMoreThanLimitThenTrueAndReturnChange()
+        {
+            //Arrange:
+            var converter = new Converter(100, 100, 2, 1, 3, false);
+
+            //Act:
+            bool success = converter.AddMaterials(110, out int change);
+
+            //Assert:
+            Assert.IsTrue(success);
+            Assert.AreEqual(100, converter.GetMaterialsCount());
+            Assert.AreEqual(10, change);
+        }
+
+        [Test]
+        public void WhenAddMaterialWithNegativeAmountThenException()
+        {
+            //Arrange:
+            var converter = new Converter(100, 100, 2, 1, 3, false);
+
+            //Assert:
+            Assert.Catch<ArgumentOutOfRangeException>(() => converter.AddMaterials(-10, out int change));
         }
 
         [Test]
@@ -229,6 +215,22 @@ namespace Modules.Converter
 
             //Assert:
             Assert.AreEqual(0, converter.GetProductsCount());
+        }
+
+        [Test]
+        public void WhenFinishProductionThenAddProducts()
+        {
+            //Arrange:
+            var converter = new Converter(100, 100, 2, 1, 3, true);
+            int startMaterialAmount = 10;
+
+            //Act:
+            bool success = converter.AddMaterials(startMaterialAmount, out int change);
+            converter.Update(Time.deltaTime);
+            converter.Update(converter.ProductionTime());
+
+            //Assert:
+            Assert.AreEqual(converter.ProductAmountFromProduction(), converter.GetProductsCount());
         }
 
         [Test]
