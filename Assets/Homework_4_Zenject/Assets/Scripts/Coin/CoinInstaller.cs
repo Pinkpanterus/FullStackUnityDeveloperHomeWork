@@ -13,7 +13,7 @@ public class CoinInstaller : Installer<GameObject, CoinInstaller>
         
     public override void InstallBindings()
     {
-        this.Container
+        Container
             .BindMemoryPool<Coin, CoinPool>()
             .WithInitialSize(10)
             .ExpandByOneAtATime()
@@ -21,9 +21,11 @@ public class CoinInstaller : Installer<GameObject, CoinInstaller>
             .UnderTransform(_parent.transform)
             .AsSingle();
             
-        this.Container
+        Container
             .Bind<ICoinSpawner>()
             .To<CoinPool>()
             .FromResolve();
+        
+        Container.BindInterfacesAndSelfTo<CoinController>().FromNew().AsSingle();
     }
 }

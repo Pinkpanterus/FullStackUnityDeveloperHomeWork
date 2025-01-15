@@ -5,22 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="997464ae-87a8-40db-8184-94f2bebc8a66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Camera/CameraInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Camera/CameraInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinPool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystemInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystemInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/UI.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/UI/UI_Installer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackUnityDeveloperHomeWork/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Configs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Configs/GameConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Camera.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Camera/CameraInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Camera/CameraInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/ICoinSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinSpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/ICoinSpawner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystemInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Input/InputInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Input/InputInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Level/LevelInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Level/LevelInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Score/ScoreInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Score/ScoreInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Snake/SnakeInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Snake/SnakeInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/UI/GameUI_Installer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/UI/GameUI_Installer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/UI/UI_Installer.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +38,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/01d573fe98d04576857ab4e954356f9964a00/11/91b775e2/OdinSerializeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/01d573fe98d04576857ab4e954356f9964a00/8e/cd018176/SerializedMonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10b6135e63434fdba4fc6c109928ab3b50800/b6/9c09eb4e/TestCaseSourceAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/54724222b7684530a2810ae1eac94ec7176000/9f/d821ed7f/Bounds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Prefabs/Input/SnakeControls.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Coin/CoinInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Game/GameSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Input/InputInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Input/SnakeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Homework_4_Zenject/Assets/Scripts/Level/LevelInstaller.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,6 +56,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2p4zRTktHnVlsXOEUV78YHa0Ow6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -135,7 +141,14 @@
       <workItem from="1735822621167" duration="15894000" />
       <workItem from="1735846887088" duration="982000" />
       <workItem from="1735853454894" duration="3516000" />
-      <workItem from="1735918257736" duration="2886000" />
+      <workItem from="1735918257736" duration="4880000" />
+      <workItem from="1735927792323" duration="247000" />
+      <workItem from="1736529990697" duration="11141000" />
+      <workItem from="1736591990691" duration="2169000" />
+      <workItem from="1736619345745" duration="4352000" />
+      <workItem from="1736699903868" duration="10936000" />
+      <workItem from="1736876153661" duration="5773000" />
+      <workItem from="1736960137542" duration="1601000" />
     </task>
     <servers />
   </component>

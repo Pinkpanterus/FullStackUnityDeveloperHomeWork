@@ -16,14 +16,15 @@ public class SnakeInstaller : MonoInstaller
     {
         Container
             .Bind<ISnake>()
-            .FromMethod(ctx =>
-            {
-                Transform parent = _worldBounds.transform;
-                DiContainer diContainer = ctx.Container;
-                ISnake snake = diContainer.InstantiatePrefabForComponent<ISnake>(_snakePrefab, parent);
-                return snake;
-            })
-            .AsSingle();
+            .FromComponentInNewPrefab(_snakePrefab)
+            .UnderTransform(_worldBounds.transform)
+            .AsCached();
+        
+        Container.BindInterfacesAndSelfTo<SnakeSelfCollidedController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<SnakeOutOfBoundariesController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<SnakeGetCoinController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<SnakeStopController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<SnakeSpeedController>().FromNew().AsSingle();
     }
 }
 

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a2fc0e51fe0314399cee890962e792, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  _levelCount: 9

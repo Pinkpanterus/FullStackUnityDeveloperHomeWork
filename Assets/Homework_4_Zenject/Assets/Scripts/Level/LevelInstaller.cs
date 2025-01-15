@@ -13,12 +13,12 @@ public class LevelInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        Container.BindInterfacesAndSelfTo<WorldBounds>().FromInstance(FindObjectOfType<WorldBounds>()).AsSingle();
+        Container.BindInterfacesAndSelfTo<WorldBounds>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle();
         CoinInstaller.Install(Container, _coinPrefab);
+        Container.BindInterfacesAndSelfTo<Difficulty>().FromNew().AsSingle().WithArguments(_gameConfig.LevelCount).NonLazy();
         GameSystemInstaller.Install(Container);
         ScoreInstaller.Install(Container);
         InputInstaller.Install(Container);
-        Container.Bind<IDifficulty>().To<Difficulty>().FromMethod(_ => new Difficulty(_gameConfig.LevelCount)).AsSingle();
     }
 }

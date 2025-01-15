@@ -652,8 +652,6 @@ GameObject:
   - component: {fileID: 1167213946}
   - component: {fileID: 1167213945}
   - component: {fileID: 1167213947}
-  - component: {fileID: 1167213948}
-  - component: {fileID: 1167213949}
   - component: {fileID: 1167213950}
   - component: {fileID: 1167213951}
   m_Layer: 0
@@ -678,9 +676,8 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1167213947}
-  - {fileID: 1167213948}
-  - {fileID: 1167213949}
   - {fileID: 1167213950}
+  - {fileID: 1167213951}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -727,30 +724,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinPrefab: {fileID: 6356347121215630505, guid: f37c023e6b8b06149a4215320dd7e482, type: 3}
   _gameConfig: {fileID: 11400000, guid: a1d62f1736a258d40926c453a144c643, type: 2}
---- !u!114 &1167213948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167213944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b2b9fb3f3d47b46b41ceb563d58e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1167213949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167213944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6495a76d7c448fa7c9768692ed10b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1167213950
 MonoBehaviour:
   m_ObjectHideFlags: 0
