@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{f8d39236-db9a-e2cb-c0bb-cc4201fe0ce7}</ProjectGuid>
+    <ProjectGuid>{7cad6e7d-6b5f-71f6-7a4c-d03c4dc8a571}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -314,70 +314,70 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Zenject-usage">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.collab-proxy@2.5.2\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Sirenix\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
@@ -755,25 +755,25 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Zenject.csproj">
-      <Project>{df162eeb-ee3b-dd01-138d-23414acd2cdc}</Project>
+      <Project>{af5475d5-1a46-3880-1a89-4c0f33fdf62d}</Project>
       <Name>Zenject</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-Editor.csproj">
-      <Project>{d6c63458-1b10-2087-f269-164decdf3d96}</Project>
+      <Project>{1f88b016-5fc6-ea22-39aa-b4757094e301}</Project>
       <Name>Zenject-Editor</Name>
     </ProjectReference>
   </ItemGroup>

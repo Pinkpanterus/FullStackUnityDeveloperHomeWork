@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{59af5089-0f44-5277-477c-670bee4a8e6a}</ProjectGuid>
+    <ProjectGuid>{154fcfca-6107-d05d-3d52-e6c2ddf08262}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -374,10 +374,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Zenject-usage">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -746,25 +746,25 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\CodeCraft\HomeWorks\Homework_4_Zenject\Homework_4_Zenject\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\CodeCraft\HomeWorks\FullStackUnityDeveloperHomeWork\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Zenject-TestFramework.csproj">
-      <Project>{7c8e172b-e3ea-5f0b-e169-016049a158ba}</Project>
+      <Project>{26c01a35-0b44-f8d7-0d21-7bf6a507f32a}</Project>
       <Name>Zenject-TestFramework</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
-      <Project>{df162eeb-ee3b-dd01-138d-23414acd2cdc}</Project>
+      <Project>{af5475d5-1a46-3880-1a89-4c0f33fdf62d}</Project>
       <Name>Zenject</Name>
     </ProjectReference>
   </ItemGroup>

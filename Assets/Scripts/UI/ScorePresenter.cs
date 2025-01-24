@@ -1,28 +1,29 @@
 ﻿using System;
+using Modules;
 using SnakeGame;
 using Zenject;
 
-public class ScorePresenter: IInitializable, IDisposable
+public sealed class ScorePresenter: IInitializable, IDisposable
 {
-    private ScoreController _scoreController;
-    private IGameUI _gameUI;
+    private readonly IScore _score;
+    private readonly IGameUI _gameUI;
 
     [Inject]
-    public ScorePresenter(IGameUI gameUI, ScoreController scoreController)
+    public ScorePresenter(IGameUI gameUI, IScore score)
     {
         _gameUI = gameUI;
-        _scoreController = scoreController;
+        _score = score;
     }
 
     public void Initialize()
     {
-        UpdateScoreUI(_scoreController.CurrentScore);
-        _scoreController.OnScoreUpdated += UpdateScoreUI;
+        UpdateScoreUI(_score.Current);
+        _score.OnStateChanged += UpdateScoreUI;
     }
 
     public void Dispose()
     {
-        _scoreController.OnScoreUpdated -= UpdateScoreUI;
+        _score.OnStateChanged -= UpdateScoreUI;
     }
 
     private void UpdateScoreUI(int currentScore)

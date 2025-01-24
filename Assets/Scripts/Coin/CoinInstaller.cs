@@ -27,6 +27,6 @@ public class CoinInstaller : Installer<GameObject, CoinInstaller>
             .FromResolve();
         
         Container.Bind<CoinManager>().FromNew().AsSingle();
-        Container.BindInterfacesAndSelfTo<SpawnCoinsOnDifficultyChangeController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<CoinSpawnController>().FromNew().AsSingle();
     }
 }

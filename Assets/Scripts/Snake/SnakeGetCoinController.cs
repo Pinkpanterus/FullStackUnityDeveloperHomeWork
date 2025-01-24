@@ -27,6 +27,6 @@ public sealed class SnakeGetCoinController: IInitializable, IDisposable
 
     private void TryGetCoin(Vector2Int position)
     {
-        _coinManager.TryGetCoin(position);
+        _coinManager.TryCollectCoin(position);
     }
 }

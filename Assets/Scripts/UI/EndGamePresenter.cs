@@ -2,13 +2,13 @@
 using SnakeGame;
 using Zenject;
 
-public sealed class EndGameUIController: IInitializable, IDisposable
+public sealed class EndGamePresenter: IInitializable, IDisposable
 {
     private readonly GameCycle _gameCycle;
     private readonly IGameUI _gameUI;
 
     [Inject]
-    public EndGameUIController(GameCycle gameCycle, IGameUI gameUI)
+    public EndGamePresenter(GameCycle gameCycle, IGameUI gameUI)
     {
         _gameUI = gameUI;
         _gameCycle = gameCycle;

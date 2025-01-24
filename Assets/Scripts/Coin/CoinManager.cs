@@ -7,13 +7,13 @@ using UnityEngine;
 public sealed class CoinManager
 {
     public event Action OnAllCoinsCollected;
-    public event Action<ICoin> OnSnakeGetCoin;
+    public event Action<ICoin> OnCoinCollected;
     
     private readonly ICoinSpawner _coinSpawner;
     private readonly IWorldBounds _worldBounds;
     private readonly IDifficulty _difficulty;
     
-    private List<ICoin> _coins = new List<ICoin>();
+    private readonly List<ICoin> _coins = new();
 
     public CoinManager(ICoinSpawner coinSpawner, IWorldBounds worldBounds, IDifficulty difficulty)
     {
@@ -33,10 +33,10 @@ public sealed class CoinManager
         }
     }
 
-    private void SnakeGetCoin(ICoin coin)
+    private void CollectCoin(ICoin coin)
     {
         _coinSpawner.Despawn(coin as Coin);
-        OnSnakeGetCoin?.Invoke(coin);
+        OnCoinCollected?.Invoke(coin);
         
         _coins.Remove(coin);
         
@@ -44,13 +44,13 @@ public sealed class CoinManager
             OnAllCoinsCollected?.Invoke();
     }
 
-    public void TryGetCoin(Vector2Int position)
+    public void TryCollectCoin(Vector2Int position)
     {
         ICoin[] coins = _coins.ToArray();
         foreach (ICoin coin in coins)
         {
             if (coin.Position == position) 
-                SnakeGetCoin(coin);
+                CollectCoin(coin);
         }
     }
 }

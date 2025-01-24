@@ -5,9 +5,8 @@ public sealed class GameSystemInstaller: Installer<GameSystemInstaller>
     public override void InstallBindings()
     {
         Container.BindInterfacesAndSelfTo<GameWinController>().FromNew().AsSingle();
-        Container.BindInterfacesAndSelfTo<GameDifficultyChangeOnGameStartController>().FromNew().AsSingle();
-        Container.BindInterfacesAndSelfTo<GameDifficultyChangeOnAllCoinsCollectedController>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<Difficulty>().FromNew().AsSingle();
         Container.Bind<GameCycle>().FromNew().AsSingle();
-        Container.BindInterfacesAndSelfTo<GameStartController>().FromNew().AsSingle();
+        Container.Bind<EntryPoint>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
     }
 }

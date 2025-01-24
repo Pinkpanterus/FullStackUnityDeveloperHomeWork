@@ -3,12 +3,12 @@ using Modules;
 using UnityEngine;
 using Zenject;
 
-public sealed class SpawnCoinsOnDifficultyChangeController: IInitializable, IDisposable
+public sealed class CoinSpawnController: IInitializable, IDisposable
 {
     private readonly CoinManager _coinManager;
     private readonly IDifficulty _difficulty;
 
-    public SpawnCoinsOnDifficultyChangeController(CoinManager coinManager, IDifficulty difficulty)
+    public CoinSpawnController(CoinManager coinManager, IDifficulty difficulty)
     {
         _coinManager = coinManager;
         _difficulty = difficulty;

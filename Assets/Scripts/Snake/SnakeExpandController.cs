@@ -15,12 +15,12 @@ public sealed class SnakeExpandController: IInitializable, IDisposable
 
     public void Initialize()
     {
-        _coinManager.OnSnakeGetCoin += ExpandSnake;
+        _coinManager.OnCoinCollected += ExpandSnake;
     }
 
     public void Dispose()
     {
-        _coinManager.OnSnakeGetCoin -= ExpandSnake;
+        _coinManager.OnCoinCollected -= ExpandSnake;
     }
 
     private void ExpandSnake(ICoin coin)

@@ -1,33 +1,35 @@
 ﻿using System;
 using Modules;
-using UnityEngine;
 using Zenject;
 
-public sealed class GameDifficultyChangeOnGameStartController: IInitializable, IDisposable
+public sealed class Difficulty: IInitializable, IDisposable
 {
     private readonly IDifficulty _difficulty;
+    private readonly CoinManager _coinManager;
     private readonly GameCycle _gameCycle;
 
     [Inject]
-    public GameDifficultyChangeOnGameStartController(IDifficulty difficulty, GameCycle gameCycle)
+    public Difficulty(IDifficulty difficulty, CoinManager coinManager, GameCycle gameCycle)
     {
         _difficulty = difficulty;
+        this._coinManager = coinManager;
         _gameCycle = gameCycle;
     }
 
     public void Initialize()
     {
+        _coinManager.OnAllCoinsCollected += SwitchDifficulty;
         _gameCycle.OnGameStarted += SwitchDifficulty;
     }
 
     public void Dispose()
     {
+        _coinManager.OnAllCoinsCollected -= SwitchDifficulty;
         _gameCycle.OnGameStarted -= SwitchDifficulty;
     }
 
     public void SwitchDifficulty()
     {
         _difficulty.Next(out int currentDifficulty);
-        Debug.Log($"Switching difficulty at start to {currentDifficulty} level");
     }
 }

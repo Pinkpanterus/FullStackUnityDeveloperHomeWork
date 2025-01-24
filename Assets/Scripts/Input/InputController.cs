@@ -3,12 +3,12 @@ using Modules;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public sealed class SnakeController: IInitializable, IDisposable
+public sealed class InputController: IInitializable, IDisposable
 {
     private ISnake _snake;
     private SnakeControlsActions _snakeControlsActions;
     
-    public SnakeController(ISnake snake)
+    public InputController(ISnake snake)
     {
         _snake = snake;
     }

@@ -15,7 +15,7 @@ public class LevelInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<WorldBounds>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameConfig>().FromInstance(_gameConfig).AsSingle();
-        Container.BindInterfacesAndSelfTo<Difficulty>().FromNew().AsSingle().WithArguments(_gameConfig.LevelCount).NonLazy();
+        Container.BindInterfacesAndSelfTo<Modules.Difficulty>().FromNew().AsSingle().WithArguments(_gameConfig.LevelCount).NonLazy();
         CoinInstaller.Install(Container, _coinPrefab);
         GameSystemInstaller.Install(Container);
         ScoreInstaller.Install(Container);
