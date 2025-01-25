@@ -2,17 +2,17 @@
 using Modules;
 using Zenject;
 
-public sealed class Difficulty: IInitializable, IDisposable
+public sealed class DifficultyController: IInitializable, IDisposable
 {
     private readonly IDifficulty _difficulty;
     private readonly CoinManager _coinManager;
     private readonly GameCycle _gameCycle;
 
     [Inject]
-    public Difficulty(IDifficulty difficulty, CoinManager coinManager, GameCycle gameCycle)
+    public DifficultyController(IDifficulty difficulty, CoinManager coinManager, GameCycle gameCycle)
     {
         _difficulty = difficulty;
-        this._coinManager = coinManager;
+        _coinManager = coinManager;
         _gameCycle = gameCycle;
     }
 
