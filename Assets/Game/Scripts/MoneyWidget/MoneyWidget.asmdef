@@ -1,0 +1,18 @@
+{
+    "name": "MoneyWidget",
+    "rootNamespace": "",
+    "references": [
+        "GUID:87df7d11a064465e9f5772fc6c82502f",
+        "GUID:62a9adcec8f3470dab014061262d08cd",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

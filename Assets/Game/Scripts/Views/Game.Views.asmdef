@@ -1,0 +1,22 @@
+{
+    "name": "Game.Views",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro",
+        "UIComponents",
+        "Zenject",
+        "dotweenModules",
+        "Game.Presenters",
+        "Planets",
+        "MoneyWidget"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
