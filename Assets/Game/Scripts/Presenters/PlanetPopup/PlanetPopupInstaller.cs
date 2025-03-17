@@ -14,14 +14,5 @@ public class PlanetPopupInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
-        Container
-            .BindInterfacesAndSelfTo<PlanetPopupPresenter>()
-            .FromNew()
-            .AsSingle();
-
-        Container
-            .Bind<PlanetPopupShower>()
-            .FromNew()
-            .AsSingle();
     }
 }

@@ -219,13 +219,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5364966909751367753}
   - component: {fileID: 5146271484780636146}
+  - component: {fileID: 1375046822037610896}
   m_Layer: 5
   m_Name: PlanetPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5364966909751367753
 RectTransform:
   m_ObjectHideFlags: 0
@@ -264,6 +265,26 @@ MonoBehaviour:
   hiddenScale: {x: 0, y: 0, z: 0}
   shownScale: {x: 1, y: 1, z: 1}
   bounceIntensity: 1.2
+--- !u!114 &1375046822037610896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860805340701978150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0261b1e5fff14c9ea6e22eaab88ff217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleText: {fileID: 9209584536786063595}
+  _populationText: {fileID: 2821577711935674451}
+  _levelText: {fileID: 5472911088123096804}
+  _incomeText: {fileID: 159619003737596086}
+  _upgradePriceText: {fileID: 2019871224800427396}
+  _planetImage: {fileID: 328163744762118583}
+  _closeButton: {fileID: 4860622370961867766}
+  _upgradeButton: {fileID: 3885529525276896717}
 --- !u!1 &965717003820527526
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,10 +552,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4047992451227309323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 45}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 22.499994, y: -25}
+  m_SizeDelta: {x: 44.99999, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5968171042463428250
 CanvasRenderer:
@@ -1829,10 +1850,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4047992451227309323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105.23498, y: -25}
+  m_SizeDelta: {x: 100.46998, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8745629169053009282
 CanvasRenderer:
@@ -1968,7 +1989,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: -624.53, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &6079379619837297995
 MonoBehaviour:

@@ -1,4 +1,3 @@
-using Game.MoneyWidget;
 using Modules.Planets;
 using UnityEngine;
 using Zenject;
@@ -13,20 +12,27 @@ namespace Game.Presenters
     {
         public override void InstallBindings()
         {
-            var planets = Container.ResolveAll<Planet>();
-            foreach (var planet in planets)
-            {
-                Container
-                    .Bind<PlanetPresenter>()
-                    .AsCached()
-                    .WithArguments(planet) 
-                    .NonLazy();
-            }
             
-            PlanetPresenter[] planetPresenters = Container.ResolveAll<PlanetPresenter>().ToArray();
-            Container.Bind<PlanetPresenter[]>().FromInstance(planetPresenters).AsCached().NonLazy();
+            Container
+                .BindInterfacesAndSelfTo<PlanetPopupPresenter>()
+                .FromNew()
+                .AsSingle();
             
+            var planets = Container.ResolveAll<Planet>().ToArray();
+            Container
+                .BindInterfacesAndSelfTo<PlanetPresenterCollection>()
+                .FromNew()
+                .AsSingle()
+                .WithArguments(planets)
+                .NonLazy();
+            
+            
+            
+            Container.BindInterfacesAndSelfTo<GameScreenPresenter>().FromNew().AsSingle().NonLazy();
             Container.BindInterfacesTo<MoneyPresenter>().AsSingle().NonLazy();
+            
+            // Container.BindInterfacesAndSelfTo<PlanetPopupPresenter>().AsCached().NonLazy();
+            // Container.Bind<PlanetPresenter[]>().FromInstance(planetPresenters).AsCached().NonLazy();
         }
     }
 }

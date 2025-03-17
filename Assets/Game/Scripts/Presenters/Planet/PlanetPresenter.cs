@@ -15,13 +15,17 @@ namespace Game.Presenters
         public event Action<bool> OnPlanetIncomeReady;
         public event Action OnPlanetUnlocked;
         
+        private GameScreenPresenter _gameScreenPresenter;
+        private PlanetPopupPresenter _planetPopupPresenter;
         private IPlanet _planet;
         private float _processTime;
         
-        public PlanetPresenter(IPlanet planet)
+        public PlanetPresenter(IPlanet planet, GameScreenPresenter gameScreenPresenter, PlanetPopupPresenter planetPopupPresenter)
         {
             _planet = planet;
-            
+            _gameScreenPresenter = gameScreenPresenter;
+            _planetPopupPresenter = planetPopupPresenter;
+
             _planet.OnUnlocked += PlanetUnlock;
             _planet.OnUpgraded += PlanetUpgrade;
             _planet.OnIncomeChanged += PlanetIncomeChange;
@@ -77,8 +81,6 @@ namespace Game.Presenters
             OnPlanetGathered?.Invoke();
         }
 
-        public IPlanet Planet => _planet;
-
         public void PlanetClick()
         {
             if (!_planet.IsUnlocked & _planet.CanUnlock)
@@ -86,6 +88,15 @@ namespace Game.Presenters
 
             if (_planet.IsIncomeReady)
                 OnCoinPressed?.Invoke();
+        }
+
+        public void PlanetHold()
+        {
+            if (!_planet.IsUnlocked)
+                return;
+            
+            _planetPopupPresenter.ChangePlanet(_planet);
+            _gameScreenPresenter.IsPopupVisible = true;
         }
 
         public void PlanetIncomeGather()
@@ -108,6 +119,11 @@ namespace Game.Presenters
             return _planet.IsIncomeReady;
         }
 
+        public bool IsUnlocked()
+        {
+            return _planet.IsUnlocked;
+        }
+
         public float IncomeProgress()
         {
             return _planet.IncomeProgress;
@@ -119,7 +135,7 @@ namespace Game.Presenters
             int minutes = Mathf.FloorToInt(timeInSeconds / 60);
             int seconds = Mathf.FloorToInt(timeInSeconds % 60);
 
-            return string.Format("{0}m:{1:D2}s", minutes, seconds);
+            return $"{minutes}m:{seconds:D2}s";
         }
         
         public string GetPrice()

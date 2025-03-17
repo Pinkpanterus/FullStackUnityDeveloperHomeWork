@@ -6,9 +6,7 @@
         "UIComponents",
         "Zenject",
         "dotweenModules",
-        "Game.Presenters",
-        "Planets",
-        "MoneyWidget"
+        "Planets"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

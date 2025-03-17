@@ -7,7 +7,7 @@ namespace Game.Presenters
 {
     public class PlanetPopup : MonoBehaviour
     {
-        private PlanetPopupPresenter _planetPopupPresenter;
+        private IPlanetPopupPresenter _planetPopupPresenter;
         [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private TextMeshProUGUI _populationText;
         [SerializeField] private TextMeshProUGUI _levelText;
@@ -17,17 +17,16 @@ namespace Game.Presenters
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _upgradeButton;
 
-
         [Inject]
-        public void Construct(PlanetPopupPresenter planetPopupPresenter)
+        public void Construct(IPlanetPopupPresenter planetPopupPresenter)
         {
             _planetPopupPresenter = planetPopupPresenter;
         }
 
-        private void Hide()
+        public void Hide()
         {
             gameObject.SetActive(false);
-            _closeButton.onClick.RemoveListener(Hide);
+            _closeButton.onClick.RemoveListener(_planetPopupPresenter.Hide);
             _planetPopupPresenter.OnPopulationChanged -= UpdatePopulation;
             _planetPopupPresenter.OnLevelChanged -= UpdateLevel;
             _planetPopupPresenter.OnIncomeChanged -= UpdateIncome;
@@ -38,7 +37,7 @@ namespace Game.Presenters
         public void Show()
         {
             gameObject.SetActive(true);
-            _closeButton.onClick.AddListener(Hide);
+            _closeButton.onClick.AddListener(_planetPopupPresenter.Hide);
 
             _titleText.text = _planetPopupPresenter.PlanetName;
             _planetImage.sprite = _planetPopupPresenter.Icon;
@@ -69,14 +68,11 @@ namespace Game.Presenters
         private void UpdateUpgradeButton()
         {
             if (_planetPopupPresenter.CanUpgrade)
-            {
                 _upgradeButton.interactable = true;
-                _upgradePriceText.text = _planetPopupPresenter.Price;
-            }
             else
-            {
                 _upgradeButton.interactable = false;
-            }
+            
+            _upgradePriceText.text = _planetPopupPresenter.Price;
         }
 
         private void UpdateIncome(string income)

@@ -1,5 +1,4 @@
 ﻿using System;
-using Modules.Planets;
 using UnityEngine;
 
 namespace Game.Presenters
@@ -14,15 +13,15 @@ namespace Game.Presenters
         event Action<bool> OnPlanetIncomeReady;
         event Action OnPlanetUnlocked;
         event Action OnCoinPressed;
-        IPlanet Planet { get; }
         void PlanetClick();
+        void PlanetHold();
         void PlanetIncomeGather();
         Sprite GetIcon(bool unlocked);
         Sprite GetCurrentIcon();
         bool IsIncomeReady();
+        bool IsUnlocked();
         float IncomeProgress();
         string GetPrice();
-        // string GetUpgradePrice();
         string IncomeProgressAsString();
     }
 }

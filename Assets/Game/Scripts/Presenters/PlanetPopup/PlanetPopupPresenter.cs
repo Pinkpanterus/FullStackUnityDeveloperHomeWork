@@ -1,21 +1,41 @@
 using System;
+using Game.Views;
 using Modules.Planets;
 using UnityEngine;
+using Zenject;
 
-public class PlanetPopupPresenter
+public class PlanetPopupPresenter : IPlanetPopupPresenter
 {
     public event Action<string> OnPopulationChanged;
     public event Action<string> OnLevelChanged;
     public event Action<string> OnIncomeChanged;
     public Sprite Icon => _planet.GetIcon(true);
     public string PlanetName => _planet.Name;
-    public string Level => _planet.Level.ToString();
-    public string Population => _planet.Population.ToString();
-    public string MinuteIncome => _planet.MinuteIncome.ToString();
-    public string Price => _planet.GetConfig().GetUpgradePrice(_planet.NextLevel).ToString();
+    public string Level => $"Level: {_planet.Level}"; 
+    public string Population => $"Population: {_planet.Population}"; 
+    public string MinuteIncome => $"Income: {_planet.MinuteIncome}"; 
+    public string Price => _planet.IsMaxLevel? "Max level reached": _planet.GetConfig().GetUpgradePrice(_planet.NextLevel).ToString();
     public bool CanUpgrade => _planet.CanUpgrade;
 
     private IPlanet _planet;
+    private IGameScreenPresenter _gameScreenPresenter;
+    
+    [Inject]
+    public PlanetPopupPresenter(IGameScreenPresenter gameScreenPresenter)
+    {
+        _gameScreenPresenter = gameScreenPresenter;
+    }
+
+
+    private void PlanetOnIncomeChanged(int income)
+    {
+        OnIncomeChanged?.Invoke(MinuteIncome);
+    }
+
+    private void PlanetOnPopulationChanged(int population)
+    {
+        OnPopulationChanged?.Invoke(Population);
+    }
 
     public void ChangePlanet(IPlanet planet)
     {
@@ -30,19 +50,14 @@ public class PlanetPopupPresenter
         _planet.OnIncomeChanged += PlanetOnIncomeChanged;
     }
 
-    private void PlanetOnIncomeChanged(int income)
-    {
-        OnIncomeChanged?.Invoke(income.ToString());
-    }
-
-    private void PlanetOnPopulationChanged(int population)
-    {
-        OnPopulationChanged?.Invoke(population.ToString());
-    }
-
     public void UpgradePlanet()
     {
         _planet.Upgrade();
         OnLevelChanged?.Invoke(Level);
+    }
+
+    public void Hide()
+    {
+        _gameScreenPresenter.IsPopupVisible = false;
     }
 }
